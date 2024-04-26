@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="ussdcodes">
+        <item>
+            {\"title\":\"Mpesa\",
+            \"description\":\"The description of this ussd code.\",
+            \"code\":\"*#334#\"
+            }
+        </item>
+        <item>
+            {\"title\":\"PayTech Packing\",
+            \"description\":\"The description of this ussd code.\",
+            \"code\":\"*#270#\"
+            }
+        </item>
+        <item>
+            {\"title\":\"Last call\",
+            \"description\":\"The description of this ussd code.\",
+            \"code\":\"*#102#\"
+            }
+        </item>
+        <item>
+            {\"title\":\"Poke\",
+            \"description\":\"The description of this ussd code.\",
+            \"code\":\"*#112*contact#\"
+            }
+        </item>
+        <item>
+            {\"title\":\"Lock contact\",
+            \"description\":\"The description of this ussd code.\",
+            \"code\":\"*#122*02*contact#\"
+            }
+        </item>
+    </array>
+    <string name="prefix">+254</string>
+</resources>

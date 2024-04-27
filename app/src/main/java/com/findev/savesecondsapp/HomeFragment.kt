@@ -22,8 +22,8 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         binding.btnPay.setOnClickListener {
-            dialMpesaUSSD()
-            //dialHoverUSSD()
+            //dialMpesaUSSD()
+            dialHoverUSSD()
         }
         return binding.root
     }
@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
     private fun dialMpesaUSSD() {
         startActivity(
             Intent(
-                "android.intent.action.CALL", Uri
+                "android.intent.action.DIAL", Uri
                     .parse(
                         "tel:"
                                 + code.replace(

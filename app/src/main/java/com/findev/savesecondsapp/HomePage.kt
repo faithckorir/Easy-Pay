@@ -17,7 +17,6 @@ class HomePage : AppCompatActivity(),Hover.DownloadListener{
         //startActivityForResult(Intent(this, PermissionActivity.class), 0);
         Log.d("easy app break", "here: here")
 
-        Hover.initialize(applicationContext);
         Log.d("easy app break", "here: after")
 
 

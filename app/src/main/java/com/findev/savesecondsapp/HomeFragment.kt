@@ -1,59 +1,99 @@
 package com.findev.savesecondsapp
 
+import android.app.PendingIntent
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.findev.savesecondsapp.databinding.FragmentHomeBinding
+import com.hover.sdk.api.Hover
+import com.hover.sdk.api.HoverParameters
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentHomeBinding
+    val code = "*#334#"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding.btnPay.setOnClickListener {
+            dialMpesaUSSD()
+            //dialHoverUSSD()
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun dialHoverUSSD() {
+       /*   *//*  val intent = Intent(applicationContext, MainActivity::class.java).apply {
+                action = NOTIFICATION_ACTION
+                data = deepLink
             }
+            val pendingIntent = PendingIntent.getActivity(
+                applicationContext,
+                NOTIFICATION_REQUEST_CODE,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
+            )*//*
+            val notification = NotificationCompat.Builder(
+                applicationContext,
+                NOTIFICATION_CHANNEL
+            ).apply {
+                // ...
+                setContentIntent(pendingIntent)
+                // ...
+            }.build()
+            notificationManager.notify(
+                NOTIFICATION_TAG,
+                NOTIFICATION_ID,
+                notification
+            )
+
+
+        val notification = NotificationCompat.Builder(
+            applicationContext,
+            NOTIFICATION_CHANNEL
+        ).apply {
+            // ...
+            setContentIntent(pendingIntent)
+            // ...
+        }.build()*/
+
+        val i = HoverParameters.Builder(requireContext())
+            .request("f2751520")
+            /*.extra(
+                "step_variable_name",
+                variable_value_as_string
+            )*/ // Only if your action has variables
+            .buildIntent()
+ /*      val pendingIntent =  PendingIntent.getActivity(
+            requireContext(),
+            0,
+            i,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        pendingIntent.send()*/
+         startActivityForResult(i, 0)
     }
+
+    private fun dialMpesaUSSD() {
+        startActivity(
+            Intent(
+                "android.intent.action.CALL", Uri
+                    .parse(
+                        "tel:"
+                                + code.replace(
+                            "#".toRegex(),
+                            Uri.encode("#")
+                        )
+                    )
+            )
+        )
+    }
+
+
 }

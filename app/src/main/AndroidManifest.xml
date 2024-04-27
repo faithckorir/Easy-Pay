@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.USSDRunnerTest"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.hover.ApiKey"
+            android:value="2f4494fc999838335c5443fdb2d2bfd3"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -7,14 +7,30 @@
     tools:context=".HomeFragment">
 
     <ImageView
+        android:id="@+id/loyalty_card"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:scaleType="fitXY"
         android:src="@drawable/loyalty_img"
         android:text="@string/hello_blank_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="#52b44a"
+        android:layout_marginEnd="16dp"
+        android:text="@string/lipa_na_mpesa_txt"
+        app:cornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@id/loyalty_card"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

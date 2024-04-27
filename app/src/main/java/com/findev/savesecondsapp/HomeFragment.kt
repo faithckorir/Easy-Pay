@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
             0,
             i,
             PendingIntent.FLAG_IMMUTABLE
-        )
+        )//
         pendingIntent.send()*/
          startActivityForResult(i, 0)
     }
